@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Create Assignment</h2>
+    <div>
+      <button routerLink="/teacher-dashboard" class="btn btn-outline-dark me-2">Back</button>
+    </div>
+  </div>
+
+  <div class="card p-4 mb-4 shadow-sm">
+    <input [(ngModel)]="title" placeholder="Assignment Title" class="form-control mb-3">
+    <input [(ngModel)]="technology" placeholder="Technology (e.g. Angular, Node.js)" class="form-control mb-2">
+  </div>
+
+  <div *ngFor="let q of questions; let i = index" class="card p-4 mb-4 shadow-sm">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="mb-0">Question {{ i + 1 }}</h5>
+    </div>
+
+    <input [(ngModel)]="q.questionText" placeholder="Question Text" class="form-control mb-3">
+
+    <div class="row">
+      <div class="col-md-6 mb-2" *ngFor="let opt of q.options; let j = index">
+        <input [(ngModel)]="q.options[j]" placeholder="Option {{ j + 1 }}" class="form-control">
+      </div>
+    </div>
+
+    <input type="number" min="0" max="3" [(ngModel)]="q.correctAnswer"
+      placeholder="Correct Option Number (0-3)" class="form-control">
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <button (click)="addQuestion()" class="btn btn-outline-secondary">+ Add Question</button>
+    <button (click)="createAssignment()" class="btn btn-primary">Create Assignment</button>
+  </div>
+</div>
