@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold">📋 My Assignments</h2>
+    <button class="btn btn-success" routerLink="/create-assignment">+ Create New Assignment</button>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered shadow-sm">
+      <thead class="table-dark">
+        <tr>
+          <th>Title</th>
+          <th>Technology</th>
+          <th>Questions</th>
+          <th style="width: 180px;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let assign of assignments">
+          <td>{{ assign.title }}</td>
+          <td>{{ assign.technology }}</td>
+          <td>{{ assign.questions.length }}</td>
+          <td>
+            <button class="btn btn-sm btn-primary me-2" (click)="viewAssignment(assign._id)">
+              <i class="bi bi-eye"></i> View
+            </button>
+            
+            <button class="btn btn-sm btn-danger" (click)="deleteAssignment(assign._id)">
+              <i class="bi bi-trash"></i> Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

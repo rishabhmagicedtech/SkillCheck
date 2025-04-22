@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold">📝 {{ assignment.title }}</h2>
+    <button class="btn btn-secondary" (click)="router.navigate(['/teacher-dashboard'])">⬅️ Back</button>
+  </div>
+
+  <h5>Technology: {{ assignment.technology }}</h5>
+
+  <div *ngFor="let q of assignment.questions; let i = index" class="card p-3 mb-3 shadow-sm">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <label class="fw-bold">Question {{ i + 1 }}</label>
+      <button class="btn btn-sm btn-danger" (click)="deleteQuestion(i)">Delete</button>
+    </div>
+
+    <input [(ngModel)]="q.questionText" placeholder="Question Text" class="form-control mb-2" />
+
+    <div *ngFor="let opt of q.options; let j = index">
+      <input [(ngModel)]="q.options[j]" placeholder="Option {{ j + 1 }}" class="form-control mb-2" />
+    </div>
+
+    <input type="number" min="0" max="3" [(ngModel)]="q.correctAnswer"
+      placeholder="Correct Option Number (0-3)" class="form-control" />
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <button class="btn btn-outline-primary" (click)="addQuestion()">+ Add Question</button>
+    <button class="btn btn-success" (click)="saveChanges()">Save Changes</button>
+  </div>
+</div>

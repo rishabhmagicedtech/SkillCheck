@@ -1,0 +1,33 @@
+.container-fluid {
+    padding: 20px 40px;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+    color: #333;
+  }
+  
+  .table {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  
+  .table th,
+  .table td {
+    vertical-align: middle;
+  }
+  
+  .table th {
+    white-space: nowrap;
+  }
+  
+  .btn {
+    border-radius: 0.4rem;
+  }
+  
+  .table thead th {
+    background-color: #212529;
+    color: #fff;
+  }
+  
